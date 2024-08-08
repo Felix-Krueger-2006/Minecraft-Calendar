@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>Home | Minecraft Calendar</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="{{ url_for('static', filename='scss/home.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='scss/settings.css') }}">
+	<!-- <link rel="stylesheet" href="../static/scss/settings.css">
+	<link rel="stylesheet" href="../static/scss/home.css"> -->
+	<script src="https://use.fontawesome.com/30155533f0.js"></script>
+	<script src="https://kit.fontawesome.com/a2968f5607.js" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		function mobile() {
+			var bars = document.getElementById("mnav");
+			if (bars.className === "mnav") {
+				bars.className += " responsive";
+			} else {
+				bars.className = "mnav";
+			}
+		}
+	</script>
+</head>
+
+<body>
+	<header>
+		<div class="nav">
+			<ul class="nav-items" id="nav-items">
+				<a>
+					<li onclick="mobile()" class="icon fa fa-bars fa-2x"></li>
+				</a>
+				<a href="#main">
+					<li class="h">
+						<div class="overlay"></div>
+						Home
+					</li>
+				</a>
+				<a href="#infos">
+					<li class="h">
+						<div class="overlay"></div>
+						Projekt
+					</li>
+				</a>
+				<div class="log">
+					<img onclick="location.href='/calendar'" alt="Logo" class="logo" src="../static/img/logo.png">
+				</div>
+				<a href="#player">
+					<li class="h">
+						<div class="overlay"></div>
+						Spieler
+					</li>
+				</a>
+				<a href="#supporter">
+					<li class="h">
+						<div class="overlay"></div>
+						Sponsoren
+					</li>
+				</a>
+			</ul>
+			<div class="mnav" id="mnav">
+				<a href="#main">
+					<li class="i">
+						Home
+					</li>
+				</a>
+				<a href="#infos">
+					<li class="i">
+						Projekt
+					</li>
+				</a>
+				<a href="#player">
+					<li class="i">
+						Spieler
+					</li>
+				</a>
+				<a href="#supporter">
+					<li class="i">
+						Sponsoren
+					</li>
+				</a>
+			</div>
+		</div>
+
+		<div class="hero" id="main">
+			<h1>Minecraft Calendar</h1>
+
+		</div>
+	</header>
+	<div class="main">
+		<div id="infos">
+			<h2>Projekt Infos</h2>
+
+			<div class="info f">
+				<div class="charity-contain">
+					<h3>,,Warum nicht mal streamen und gleichzeitig was Gutes tun?''</h3>
+					<p id="charity">
+					<div class="progress">
+						<p class="have">{{donations}}€</p>
+						<p class="need">2.500€</p>
+						<progress max="2500" value="{{donations}}">
+					</div>
+					<a target="_blank"
+						href="https://www.betterplace.org/de/fundraising-events/45538-mc-calender-charity-projekt"
+						id="charity-btn">Jetzt Spenden</a>
+					</p>
+				</div>
+				<img alt="wenn" class="gimg b better" src="{{ url_for('static', filename='img/betterplace.png') }}">
+				<!-- <img alt="wenn" class="gimg b" src="../static/img/stock.jpg"> -->
+			</div>
+
+			<hr>
+
+			<div class="info e">
+				<div>
+					<h3>Was ist Minecraft Calendar?</h3>
+					<p>
+						Minecraft Calendar ist ein Minecraft-Projekt, in dem sowohl Streamer, als auch Zuschauer, die
+						Chance haben sich eine Stadt aufzubauen, Kontakte zu knüpfen und sich der Winterzeit zu
+						erfreuen!
+						Jeden Tag wird es die Möglichkeit geben, ein Adventskalender aufzurufen, welcher Custom Items,
+						Rabattaktionen, Giveaways und vieles mehr beinhalten wird.
+					</p>
+				</div>
+				<img alt="calendar" class="gimg a" src="{{ url_for('static', filename='img/stock1.jpg') }}">
+				<!-- <img alt="calendar" class="gimg a" src="../static/img/stock.jpg"> -->
+			</div>
+
+			<hr>
+
+			<div class="info f">
+				<div>
+					<h3>Wann findet Minecraft Calendar statt?</h3>
+					<p>
+						Damit jeder die Chance hat an Weihnachten mit der Familie oder mit Freunden zu feiern haben wir
+						uns dazu entschlossen, das Projekt um genau 2 Tage zu verschieben:
+						Der Adventskalender findet vom 28.11 bis 22.12 statt.
+						Der Server öffnet vom 26.11 bis zum 26.12.
+						So habt ihr als Content Creator auch die Chance, täglich Videos zu produzieren und diese dann am
+						entsprechendem Tag hochzuladen.
+					</p>
+				</div>
+				<img alt="wenn" class="gimg b" src="{{ url_for('static', filename='img/stock2.jpg') }}">
+				<!-- <img alt="wenn" class="gimg b" src="../static/img/stock.jpg"> -->
+			</div>
+
+			<hr>
+
+			<div class="info g">
+				<div>
+					<h3>Was ist sonst noch wichtig?</h3>
+					<p>
+						Jeder Zuschauer, der an Giveaways teilnehmen möchte muss auf dem Minecraft Calendar
+						Discord-Server sein, da alle Giveaways über diesen Server laufen werden. Einen Einladungslink
+						findet ihr hier: <a href="https://discord.gg/CknMqQfVDU">https://discord.gg/CknMqQfVDU</a>.
+					</p>
+				</div>
+				<img alt="else" class="gimg c" src="{{ url_for('static', filename='img/stock3.jpg') }}">
+				<!-- <img alt="else" class="gimg c" src="../static/img/stock.jpg"> -->
+			</div>
+		</div>
+		<div id="player">
+			<div class="player">
+				<h2>Die Spieler</h2>
+				<div class="player-team">
+					{% for user in streamer %}
+						<div class="card">
+							<b style="
+							background: url('{{ user["image"] }}');
+							background-position: center;
+							background-repeat: no-repeat;
+							background-size: cover;
+							"></b>
+							<div class="content">
+								<p class="title">{{ user["name"] }}<br><span>Ingame: {{ user["ingame"] }}</span></p>
+								<ul class="sci">
+									{% if user["twitch"] != "" %}
+										<li><a target="_blank" href="{{ user["twitch"] }}"><i class="fa-brands fa-twitch"></i></a></li>
+									{% endif %}
+									{% if user["instagram"] != "" %}
+										<li><a target="_blank" href="{{ user["instagram"] }}"><i class="fa-brands fa-instagram"></i></a></li>
+									{% endif %}
+									{% if user["youtube"] != "" %}
+										<li><a target="_blank" href="{{ user["youtube"] }}"><i class="fa-brands fa-youtube"></i></a></li>
+									{% endif %}
+									{% if user["tiktok"] != "" %}
+										<li><a target="_blank" href="{{ user["tiktok"] }}"><i class="fa-brands fa-tiktok"></i></a></li>
+									{% endif %}
+								</ul>
+							</div>
+						</div>
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+		<div id="supporter">
+			<div class="an-img">
+				<h2>Sponsoren</h2>
+				<div class="an-t">
+					<img onclick="location.href='https://www.snagger-germany.com/ref/121/'"
+						src="https://www.snagger-germany.com/wp-content/uploads/2018/08/cropped-Snagger-Logo-3-1.png"
+						alt="snagger">
+					<img onclick="location.href='https://www.buffbag.de'"
+						src="https://www.buffbag.de/wp-content/themes/buffbag/img/logo_header.png" alt="BuffBag">
+					<img onclick="location.href='https://propads.gg/MC-Calender'"
+						src="https://www.lanresort.de/data/sites/lanresort-2023/sidebar/propads_logo.png" alt="Propads">
+					<img onclick="location.href='https://www.g-portal.com/de'"
+						src="https://www.g-portal.com/sc/images/svgs/logo.svg" alt="Gportal">
+					<img onclick="location.href='https://mc-host24.de/donate/PaTytan.de'" src="https://static-cdn.jtvnw.net/jtv_user_pictures/12ec0a8a-1529-4e49-8f86-0f2172e7088f-profile_image-300x300.png" alt="Tytan">
+				</div>
+			</div>
+		</div>
+		<div id="contact">
+			<h2>Kontaktieren</h2>
+			<p>Email - <a href="mailto:tvinvincible52@gmail.com">tvinvincible52@gmail.com</a></p>
+			<p>Discord - <a href="https://discord.gg/CknMqQfVDU">discordapp.com/invite/CknMqQfVDU.</a></p>
+		</div>
+	</div>
+
+	<!-- <iframe frameborder="0" marginheight="0" marginwidth="0"
+		src="https://www.betterplace-widget.org/fundraising_events/45538?l=de" width="100%" height="320"
+		style="border: 0; padding:0; margin:0;">Informieren und spenden: &lt;a
+		href=&#39;https://www.betterplace.org/de/fundraising-events/45538-mc-calender-charity-projekt&#39;
+		target=&#39;_blank&#39;&gt;„MC-Calender Charity-Projekt“&lt;/a&gt; auf betterplace.org öffnen.</iframe> -->
+
+	<footer>
+		<img alt="MyServer Logo" src="{{ url_for('static', filename='img/logo.png') }}">
+		<!-- <img alt="MyServer Logo" src="../static/img/logo.png"> -->
+		<p>Copyright &copy; Minecraft Calendar 2023</p>
+	</footer>
+
+
+	<script src="https://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+</body>
+
+</html>

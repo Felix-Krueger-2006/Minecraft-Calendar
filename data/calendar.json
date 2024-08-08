@@ -1,0 +1,175 @@
+[
+    {
+        "img": "calendar/calendar_1.png",
+        "counter": 1,
+        "open": true,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/calendar_2.png",
+        "counter": 2,
+        "open": true,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/calendar_3.png",
+        "counter": 3,
+        "open": true,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/calendar_4.png",
+        "counter": 4,
+        "open": true,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/gportal.png",
+        "counter": 5,
+        "open": true,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und sichere dir die Chance, einen Gameserver von G-Portal fuer einen Monat zu gewinnen.",
+        "save": false
+    },
+    {
+        "img": "calendar/rabatt.png",
+        "counter": 6,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/calendar_4.png",
+        "counter": 7,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 8,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 9,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/snagger_und_propads2.png",
+        "counter": 10,
+        "open": false,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und sichere dir ein Snagger-Paket! Darin enthalten sind ein Snagger und ein Snack von Snagger. Doch lieber was anderes? Darüber hinaus kannst du auch ein ein Propads XXL Mauspad mit einem exclusiven mc-calendar Design gewinnen (1 Gewinn pro Person)",
+        "save": false
+    },
+    {
+        "img": "calendar/calendar_4.png",
+        "counter": 11,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/Buffbag.png",
+        "counter": 12,
+        "open": false,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und habe die Chance, ein Buffbag MIGHTY MIX inklusive Shaker zu gewinnen.",
+        "save": false
+    },
+    {
+        "img": "calendar/calendar_4.png",
+        "counter": 13,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 14,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/propads2.png",
+        "counter": 15,
+        "open": false,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und sichere dir die Moeglichkeit, ein Propads XXL Mauspad mit einem exclusiven mc-calendar Design zu gewinnen.",
+        "save": false
+    },
+    {
+        "img": "calendar/",
+        "counter": 16,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 17,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 18,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 19,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/snagger.png",
+        "counter": 20,
+        "open": false,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und sichere dir ein Snagger-Paket! Darin enthalten sind ein Snagger und ein Snack von Snagger.",
+        "save": false
+    },
+    {
+        "img": "calendar/",
+        "counter": 21,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/calendar_4.png",
+        "counter": 22,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/",
+        "counter": 23,
+        "open": false,
+        "form": false,
+        "disc": ""
+    },
+    {
+        "img": "calendar/all.png",
+        "counter": 24,
+        "open": false,
+        "form": true,
+        "disc": "Nimm am Gewinnspiel teil und gewinne: 1x XXL Mauspads von Propads (exclusives mc-calendar Design), 3x Snagger Bundles (je mit Snagger und Snagger Snack), 1x Bufferbag MIGHTY MIX mit Shaker, sowie 2x G-Portal Gameserver fuer einen Monat. (1 Gewinn pro Person)"
+    }
+]

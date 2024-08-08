@@ -1,0 +1,378 @@
+.calendar-container {
+    padding: 80px 150px;
+    min-height: 100dvh;
+    background: url("../img/bg6.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    h1 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: white;
+    }
+}
+
+$perspective: 850px;
+$present-dimension: 9.5em;
+$date-dimension: calc($present-dimension / 5);
+$bauble-dimension: calc($present-dimension / 4.5);
+
+@keyframes shake {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    2% {
+        transform: rotate(-10deg);
+    }
+
+    4% {
+        transform: rotate(10deg);
+    }
+
+    6% {
+        transform: rotate(-5deg);
+    }
+
+    8% {
+        transform: rotate(5deg);
+    }
+
+    10% {
+        transform: rotate(0deg);
+    }
+}
+
+main {
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    z-index: 5;
+}
+
+.present {
+    position: relative;
+    width: $present-dimension;
+    height: $present-dimension;
+    margin: 1em 1.3em;
+    perspective: $perspective;
+    box-shadow: 0px 0px 20px red;
+}
+
+@media(max-width: 400px) {
+    .present {
+        margin: 1.3em 1.3em;
+    }
+
+    .calendar-container {
+        padding: 90px 0px;
+    }
+}
+
+.present__pane,
+.present__content {
+    width: inherit;
+    height: inherit;
+}
+
+.present__pane {
+    position: relative;
+    background: url("../img/türchen.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transform-style: preserve-3d;
+    transform-origin: 0;
+    perspective: $perspective;
+    text-align: center;
+    box-shadow: 0 0 40px 0 rgba(black, .15);
+    cursor: pointer;
+    transition: all .2s ease-out;
+}
+
+.present__date {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: $date-dimension;
+    height: $date-dimension;
+    margin: 0;
+    font-size: 2em;
+    line-height: $date-dimension;
+    background: SlateBlue;
+    color: white;
+    border-radius: 50%;
+    box-shadow: inset 0 0 10px 5px rgba(black, 0.15);
+}
+
+// hover styles
+.present_open {
+    position: relative;
+    background: rgb(240,240,240);
+    transform: rotateY(-97deg);
+    perspective-origin: 0;
+    transition: all .25s ease-in;
+
+    .present__date {
+        backface-visibility: hidden; // hide date
+    }
+}
+
+.present_open::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, rgba(171,27,56,255), rgba(240,26,52,255), rgba(171,27,56,255));
+}
+
+.present_open::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 100%;
+    background: linear-gradient(to right, rgba(171,27,56,255), rgba(240,26,52,255), rgba(171,27,56,255));
+}
+
+.present_new_open {
+    background: rgb(240,240,240);
+    transform: rotateY(-97deg);
+    perspective-origin: 0;
+    transition: all .25s ease-in;
+
+    .present__date {
+        backface-visibility: hidden; // hide date
+    }
+}
+
+.present_new_open::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    height: 10px;
+    width: 100%;
+    background: linear-gradient(to right, rgba(171,27,56,255), rgba(240,26,52,255), rgba(171,27,56,255));
+}
+
+.present_new_open::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 100%;
+    // background: rgba(171,27,56,255);
+    background: linear-gradient(to right, rgba(171,27,56,255), rgba(240,26,52,255), rgba(171,27,56,255));
+}
+
+.present__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    box-shadow: 0 0 40px 0 rgba(black, .15), inset 0 0 30px 20px rgba(black, .15);
+    z-index: -1;
+}
+
+.present__bauble {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    img {
+        height: 100%;
+        overflow: hidden;
+    }
+
+    cursor: pointer;
+}
+
+#new_present {
+    animation: shake 3s infinite;
+}
+
+#new_present::after {
+    position: absolute;
+    content: "NEW";
+    color: red;
+    font-size: 20px;
+    font-weight: bolder;
+    top: 0px;
+    right: 10px;
+}
+
+$primary-color: #fff;
+$cursor: pointer;
+
+#form-container {
+    top: 38px;
+    position: absolute;
+    height: 100dvh;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+
+    .container {
+        background: #fff;
+        width: 600px;
+        height: 450px;
+        display: grid;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        grid-template-columns: 1fr 1fr;
+        place-items: center;
+        line-height: 1.5;
+        box-shadow: 0 20px 30px rgba(0, 0, 0, 0.185);
+
+        &-close {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background-color: $primary-color;
+            width: 45px;
+            height: 45px;
+            display: grid;
+            place-items: center;
+            font-size: 1.7rem;
+            color: #2E4052;
+            border-radius: 50%;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.164);
+            cursor: $cursor;
+        }
+
+        img {
+            width: 250px;
+            height: 400px;
+            object-fit: cover;
+            object-position: center;
+            position: relative;
+            top: -2px;
+        }
+
+        &-text {
+            padding: 25px 40px 10px 10px;
+
+            h2 {
+                font-size: 1.2rem;
+                color: #1A2250;
+            }
+
+            p {
+                font-size: 12px;
+                color: #3B4169;
+                margin: 10px 0;
+            }
+
+            input,
+            button {
+                width: 100%;
+                border: none;
+                padding: 14px;
+                border-radius: 3px;
+            }
+
+            input {
+                border: 2px solid #DADDEC;
+                margin: 5px 0 10px;
+                font-size: 1rem;
+                color: #656880;
+            }
+
+            button {
+                background-image: linear-gradient(to right, #89CAFF, #6589FF);
+                display: block;
+                color: $primary-color;
+                font-size: 1rem;
+                cursor: $cursor;
+                box-shadow: 0 5px 20px #89caff94;
+                transition: box-shadow .3s ease-in-out;
+                position: relative;
+                top: -40px;
+            }
+
+            button:hover {
+                box-shadow: none;
+            }
+
+            .checkbox {
+                display: inline-block;
+                position: relative;
+                left: -110px;
+            }
+
+            .checkbox-dis {
+                display: inline-block;
+                width: 88%;
+                position: relative;
+                left: 12%;
+                top: -40px;
+            }
+        }
+    }
+}
+
+@media(max-width: 650px) {
+    #form-container {
+        .container {
+            width: 80%;
+
+            .container-text{
+                width: 100%;
+                position: absolute;
+                right: -5%;
+            }
+            img {
+                display: none;
+            }
+        }
+    }
+}
+
+.error-container {
+    position: absolute;
+    top: 70px;
+    height: 40px;
+    background: rgb(65, 65, 71);
+    color: white;
+    width: 100%;
+    box-shadow: 0px 2px 10px black;
+    animation: error 5s;
+    animation-fill-mode: forwards;
+
+    .error-text {
+        text-align: center;
+        font-size: 25px;
+        font-weight: 900;
+    }
+}
+
+@keyframes error {
+    0% {
+        top: 0px;
+    }
+    25%{
+        top: 70px;
+    }
+    75%{
+        top: 70px;
+    }
+    100%{
+        top: 0;
+    }
+}

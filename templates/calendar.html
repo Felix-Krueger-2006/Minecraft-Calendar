@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scss/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scss/settings.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='scss/calendar.css') }}">
+    <!-- <link rel="stylesheet" href="../static/scss/settings.css">
+	<link rel="stylesheet" href="../static/scss/home.css"> -->
+    <script src="https://use.fontawesome.com/30155533f0.js"></script>
+    <script src="https://kit.fontawesome.com/a2968f5607.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        function mobile() {
+            var bars = document.getElementById("mnav");
+            if (bars.className === "mnav") {
+                bars.className += " responsive";
+            } else {
+                bars.className = "mnav";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="nav">
+            <ul class="nav-items" id="nav-items">
+                <a>
+                    <li onclick="mobile()" class="icon fa fa-bars fa-2x"></li>
+                </a>
+                <a href="/#main">
+                    <li class="h">
+                        <div class="overlay"></div>
+                        Home
+                    </li>
+                </a>
+                <a href="/#infos">
+                    <li class="h">
+                        <div class="overlay"></div>
+                        Projekt
+                    </li>
+                </a>
+                <div class="log">
+                    <img alt="Logo" onclick="location.href='/calendar'" class="logo"
+                        src="{{ url_for('static', filename='img/logo.png') }}">
+                    <!-- <img alt="Logo" class="logo" src="../static/img/logo.png"> -->
+                </div>
+                <a href="/#player">
+                    <li class="h">
+                        <div class="overlay"></div>
+                        Spieler
+                    </li>
+                </a>
+                <a href="/#supporter">
+                    <li class="h">
+                        <div class="overlay"></div>
+                        Sponsoren
+                    </li>
+                </a>
+            </ul>
+            <div class="mnav" id="mnav">
+                <a href="/#main">
+                    <li class="i">
+                        Home
+                    </li>
+                </a>
+                <a href="/#infos">
+                    <li class="i">
+                        Projekt
+                    </li>
+                </a>
+                <a href="/#player">
+                    <li class="i">
+                        Spieler
+                    </li>
+                </a>
+                <a href="/#supporter">
+                    <li class="i">
+                        Sponsoren
+                    </li>
+                </a>
+            </div>
+        </div>
+        {% if errorText != "" %}
+        <div class="error-container">
+            <p class="error-text">{{errorText}}</p>
+        </div>
+        {% endif %}
+    </header>
+    {% if form %}
+    <div id="form-container" style="display: none">
+        <div class="container">
+            <div class="container-close" onclick="document.getElementById('form-container').setAttribute('style', 'display: none'), document.body.setAttribute('style', 'overflow: show')">&times;</div>
+            <img src="{{ url_for('static', filename="img/bg3.jpg") }}" alt="image">
+            <form action="/calendar" method="POST" class="container-text">
+                <h2>Melde dich jetzt an!</h2>
+                <p>{{list[day-1]["disc"]}}</p>
+                <input type="email" name="e-mail" required placeholder="Email Adresse...">
+                <input class="checkbox" required type="checkbox">
+                <p class="checkbox-dis">Hiermit stimme ich zu das meine Daten gespeichert werden dürfen.</p>
+                <button type="submit">Mitmachen</button>
+            </form>
+        </div>
+    </div>
+    {% endif %}
+    <div class="calendar-container">
+        <h1>MC-Calendar</h1>
+        <main>
+            {% for data in list %}
+            {% if again != data["counter"] and data["counter"] == day %}
+            <article id="new_present" class="present">
+                <div class="present__pane"
+                    onclick="this.classList.add('present_new_open'); document.cookie = 'again={{data['counter']}}'; document.getElementById('new_present').setAttribute('id', '')">
+                    <h2 class="present__date">{{data["counter"]}}</h2>
+                </div>
+                {% if data["form"] %}
+                <div class="present__content" onclick="window.scrollTo(0, 0); document.getElementById('form-container').setAttribute('style', 'display: block'), document.body.setAttribute('style', 'overflow: hidden');">
+                    <div class="present__bauble">
+                        <img src="{{ url_for('static', filename="img/" + data["img"]) }}" alt="gewinn">
+                    </div>
+                </div>
+                {% else %}
+                <div class="present__content">
+                    <div class="present__bauble">
+                        <img src="{{ url_for('static', filename="img/" + data["img"]) }}" alt="gewinn">
+                    </div>
+                </div>
+                {% endif %}
+            </article>
+            {% elif data["open"] %}
+            <article class="present" style="cursor: auto !important;">
+                <div class="present__pane present_open">
+                    <h2 class="present__date">{{data["counter"]}}</h2>
+                </div>
+                {% if data["form"] and data["counter"] == day %}
+                <div class="present__content" onclick="window.scrollTo(0, 0); document.getElementById('form-container').setAttribute('style', 'display: block'), document.body.setAttribute('style', 'overflow: hidden');">
+                    <div class="present__bauble">
+                        <img src="{{ url_for('static', filename="img/" + data["img"]) }}" alt="gewinn">
+                    </div>
+                </div>
+                {% else %}
+                <div class="present__content">
+                    <div class="present__bauble">
+                        <img src="{{ url_for('static', filename="img/" + data["img"]) }}" alt="gewinn">
+                    </div>
+                </div>
+                {% endif %}
+            </article>
+            {% elif data["counter"] != 25 %}
+            <article class="present">
+                <div class="present__pane">
+                    <h2 class="present__date">{{data["counter"]}}</h2>
+                </div>
+                <div class="present__content">
+                    <div class="present__bauble">
+                    </div>
+                </div>
+            </article>
+            {% else %}
+            <div class="nothing" style="display: none"></div>
+            {% endif %}
+            {% endfor %}
+
+        </main>
+    </div>
+    <footer>
+        <img alt="MyServer Logo" src="{{ url_for('static', filename='img/logo.png') }}">
+        <!-- <img alt="MyServer Logo" src="../static/img/logo.png"> -->
+        <p>Copyright &copy; Minecraft Calendar 2023</p>
+    </footer>
+
+
+    <script src="https://code.jquery.com/jquery-1.11.2.min.js" type="text/javascript"></script>
+    <script>
+        function cookie() {
+            document.cookie = 'again=2'
+        }
+    </script>
+</body>
+
+</html>
